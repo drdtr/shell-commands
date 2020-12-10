@@ -1,2 +1,2 @@
 # shell-commands
-Some useful shell commands for git, anaconda, etc.
+Just some shell commands for git, anaconda, and other tools. Many of those commands were used in the scope of udacity nanodegree programs.
