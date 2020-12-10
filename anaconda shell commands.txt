@@ -1,0 +1,42 @@
+conda upgrade conda
+conda upgrade --all
+
+conda install numpy scipy pandas
+conda install numpy=1.10
+
+conda remove package_name
+conda update package_name
+conda update --all
+conda list
+
+conda search *search_term*
+
+
+
+conda create -n my_env numpy
+
+conda create -n py3 python=3 
+conda create -n py2 python=2
+conda create -n py33 python=3.3
+
+conda activate my_env
+conda deactivate
+
+# from quiz: create environment with python 3.6 and packages numpy and pandas 
+conda create -n data python=3.6 numpy pandas 
+
+conda env export > environment.yaml
+conda env create -f environment.yaml
+
+conda env list
+conda info --envs
+
+conda env remove -n env_name
+
+
+# Note from lesson: "I also usually include a pip requirements.txt file using pip freeze ... for people not using conda."
+
+conda install jupyter notebook
+conda install nb_conda
+
+

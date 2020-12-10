@@ -1,0 +1,147 @@
+git init
+
+git config user.email "d.trachtenherz+git@gmail.com"
+
+git log --oneline
+
+git log --stat 
+
+git log -p
+git log --patch
+
+git log --stat --patch 
+
+git log --patch -w
+git log --patch --ignore-all-space
+
+git diff
+
+git tag -a v1.0
+git tag -a v0.2 9cce09e
+
+git tag -d v1.0
+
+# since v2.13, git log automatically includes --decorate
+git log 
+git log --decorate
+git log --no-decorate
+
+git log --oneline --graph --all
+
+git merge footer
+# undo a merge. ^ indicates "the parent commit"
+git reset --hard HEAD^
+
+
+
+git commit --amend
+
+git revert <commit-SHA>
+
+# referring to previous commit
+# - parent commit
+# -- HEAD^
+# -- HEAD~
+# -- HEAD~1
+# - grandparent commit
+# -- HEAD^^
+# -- HEAD~2
+# - great-grandparent commit
+# -- HEAD^^^
+# -- HEAD~3
+# Important difference between ^ and ~: a merge commit has two parents, ^ references the 1st parent and ^2 the 2nd parent (the branch that was merged in)
+
+
+# move the HEAD and current branch pointer to the referenced commit
+git reset <referenced-commit>
+# what happens with the committed changes:
+#   git reset [--mixed]: unstage, i.e., move to working directory
+#   git reset --soft: move to the Staging index
+#   git reset --hard: remove
+
+
+# before doing git reset, you can create a backup branch
+git branch backup
+
+# move changes from HEAD commit to working directory
+git reset --mixed HEAD^
+
+# restore index.html from head
+git checkout -- index.html
+
+# merge backup branch
+git merge backup
+
+
+# move changes from HEAD commit to the Staging index
+git reset --soft HEAD^
+
+# remove changes from HEAD commit
+git reset --hard HEAD^
+
+
+
+git remote
+git remote -v
+
+git remote add origin <remote-repo>
+
+git push <remote-shortname> <branch>
+git push origin master
+
+git pull origin master
+git fetch origin master
+
+# git fetch <tracking-branch> 
+# - copies commits from remote branch to local repo.
+# - moves the local tracking branch (e.g. origin/master) to the most recent commit
+# git pull
+# - git fetch <tracking-branch>
+# - git merge <tracking-branch>
+
+
+# group commits by author: Shows number and list of commits for each author, sorted alphabetically
+# -s: show only number of commits
+# -n: sort by number of commits
+git shortlog
+git shortlog -s -n
+
+# Filter by author. Also possible for substrings
+git log --author=<author-name>
+
+# search in commit messages
+git log --grep=<text>
+
+
+# From Lesson 9.2: Recap: creating a PR on a repo:
+# - fork the source repository
+# - clone your fork down to your machine
+# - make some commits (ideally on a topic branch!)
+# - push the commits back to your fork
+# - create a new pull request and choose the branch that has your new commits
+
+# add new remote shortname and URL
+git remote add upstream <upstream-branch>
+
+# change remote shortname
+git remote rename curr-shortname new-shortname
+
+# merge changes from original repo and push them to own forked repo
+git checkout master
+git merge upstream/master
+git push origin master
+
+# hint: create a backup branch before rebasing
+# rebase: squash last 3 commits
+git rebase -i HEAD~3
+# -i means interactive
+# in 1st opened text editor: 
+# - commit are in reverse chronological order (oldest on top). 
+# - set git rebase commands for each commit: reword for the oldest commit (1st line), squash for all other commits
+# next opened text editor
+# - adjust commit message
+
+# push squashed commit to remote branch, needs to be forces
+git push origin HEAD --force-with-lease
+
+

@@ -1,0 +1,6 @@
+jupyter notebook
+
+jupyter nbconvert --to html notebook.ipynb
+
+jupyter nbconvert --to slides notebook.ipynb 
+jupyter nbconvert --to slides --post serve notebook.ipynb 
