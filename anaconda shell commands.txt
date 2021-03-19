@@ -39,4 +39,7 @@ conda env remove -n env_name
 conda install jupyter notebook
 conda install nb_conda
 
-
+# If IntelliJ complains that "notebook kernel doesn't match module sdk", 
+# try running folloing in the conda prompt (tributes to https://youtrack.jetbrains.com/issue/PY-36913#focus=Comments-27-4387885.0-0).
+# Then "Python (<conda-env-name>)" should appear in IntelliJ among the available kernels.
+python -m ipykernel install --user --name <conda-env-name> --display-name "Python (<conda-env-name>)"
