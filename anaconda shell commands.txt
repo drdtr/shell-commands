@@ -43,3 +43,11 @@ conda install nb_conda
 # try running folloing in the conda prompt (tributes to https://youtrack.jetbrains.com/issue/PY-36913#focus=Comments-27-4387885.0-0).
 # Then "Python (<conda-env-name>)" should appear in IntelliJ among the available kernels.
 python -m ipykernel install --user --name <conda-env-name> --display-name "Python (<conda-env-name>)"
+
+
+# convert Jupyter notebook to html or PDF
+
+conda activate python-examples
+jupyter notebook
+jupyter nbconvert --to slides slides_data_analysis_and_case_study.ipynb 
+jupyter nbconvert --to script slides_data_analysis_and_case_study.ipynb
